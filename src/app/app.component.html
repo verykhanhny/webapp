@@ -334,3 +334,8 @@
 
 
 <router-outlet></router-outlet>
+
+<div>
+  <button (click)="getData()">Get Data</button>
+  <p *ngIf="responseData">Response Data: {{ responseData }}</p>
+<div>
