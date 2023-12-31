@@ -337,5 +337,5 @@
 
 <div>
   <button (click)="getData()">Get Data</button>
-  <p *ngIf="responseData">Response Data: {{ responseData }}</p>
+  <p *ngIf="responseData">Response Data: {{ responseData | json }}</p>
 <div>

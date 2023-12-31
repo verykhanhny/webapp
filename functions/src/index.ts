@@ -15,5 +15,8 @@ import * as logger from "firebase-functions/logger";
 
 export const helloWorld = onRequest((request, response) => {
   logger.info("Hello logs!", {structuredData: true});
-  response.send("Hello from Firebase!");
+  response.set("Access-Control-Allow-Origin", "*");
+  response.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  response.set("Access-Control-Allow-Headers", "Content-Type");
+  response.send("{\"hello\": \"from firebase functions\"}");
 });
