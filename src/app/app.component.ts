@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterOutlet} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
 
-import { DataService } from './data.service';
-import { MenuComponent } from './menu/menu.component';
+import {DataService} from './data.service';
+import {MenuComponent} from './menu/menu.component';
 
 @Component({
   selector: 'app-root',
