@@ -15,17 +15,29 @@ import {MenuComponent} from './menu/menu.component';
 })
 export class AppComponent {
   title = 'frontend';
-  responseData: any;
+  getResponseData: any;
+  putResponseData: any;
 
   constructor(private dataService: DataService) {}
 
   getData() {
     this.dataService.getData().subscribe(
       (data) => {
-        this.responseData = data;
+        this.getResponseData = data;
       },
       (error) => {
-        console.error('Error fetching data:', error);
+        console.error('Error getting data:', error);
+      },
+    );
+  }
+
+  putData() {
+    this.dataService.putData().subscribe(
+      (data) => {
+        this.putResponseData = data;
+      },
+      (error) => {
+        console.error('Error putting data:', error);
       },
     );
   }

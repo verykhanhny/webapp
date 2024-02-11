@@ -3,6 +3,8 @@
 
 <div>
   <button (click)="getData()">Get Data</button>
-  <p *ngIf="responseData">Response Data: {{ responseData | json }}</p>
+  <p *ngIf="getResponseData">Get Response Data: {{ getResponseData | json }}</p>
   <div></div>
+  <button (click)="putData()">Put Data</button>
+  <p *ngIf="putResponseData">Put Response Data: {{ putResponseData | json }}</p>
 </div>
