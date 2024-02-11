@@ -17,10 +17,10 @@ export class DataService {
   putData(): Observable<any> {
     return this.http.put(`${this.apiUrl}`, `{
       "name": "Mikayla",
+      "comment": "",
       "continue": true,
       "phone": "303-115-9686",
-      "rating": 5,
-      "dnp": "error"
+      "rating": 5
     }`);
   }
 }

@@ -31,10 +31,10 @@ app.get('', async (req, res) => {
     const data = snapshot.docs.map((doc) => doc.data());
 
     // Send the data as response
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
     logger.error('Error reading from Firestore:', error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).json({error: 'Internal Server Error'});
   }
 });
 
@@ -43,6 +43,24 @@ app.put('', async (req, res) => {
     // Extract data from the request JSON
     const data = JSON.parse(req.body);
     logger.info('data:', data);
+
+    // Validate data
+    const requiredFields = ['name', 'phone', 'rating', 'continue', 'comment'];
+    for (const field of requiredFields) {
+      if (!(field in data)) {
+        logger.error('Missing required fields');
+        res.status(400).json({error: 'Missing required fields'});
+        return;
+      }
+    }
+
+    for (const field in data) {
+      if (!requiredFields.includes(field)) {
+        logger.error('Found unsupported fields');
+        res.status(400).json({error: 'Found unsupported fields'});
+        return;
+      }
+    }
 
     // Write data to Firestore collection
     const snapshot = await db.collection('reviews').add(data);
@@ -54,7 +72,7 @@ app.put('', async (req, res) => {
     });
   } catch (error) {
     logger.error('Error writing to Firestore:', error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).json({error: 'Internal Server Error'});
   }
 });
 
